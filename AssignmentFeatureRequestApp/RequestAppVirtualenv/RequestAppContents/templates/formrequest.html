@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Insurance Company</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Here we are linking the bootstrap and knockout.js library files -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{{ url_for ('static', filename='js/knockout-3.4.2.js')}}"></script>
+  <!--<script type="text/javascript" src="{{ url_for ('static', filename='js/featurerequestformbind.js')}}"></script>-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='css/LocalCSS/styles.css')}}">
+
+</head>
+
+<body>
+  <div class="container">
+    <!-- Navigation bar section html code -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active">
+        <a href="#">Feature Request Home</a>
+      </li>
+      <li>
+        <a href='/table'>Feature Request Details</a>
+      </li>
+    </ul>
+    <div class="container" style="width:40%">
+      <h3 style="text-align: center;">Feature Request form</h3>
+      <!-- From here form section starts in which contents are written title, description e.t.c-->
+      <form>
+        <div class="form-group">
+          <label for="Title">Title:</label>
+          <input type="text" data-bind="value: title" class="form-control" id="title" name="short note" required>
+        </div>
+        <div class="form-group">
+          <label for="Description">Description:</label>
+          <textarea class="form-control" rows="1" id="Description" name="text" data-bind="value:description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="Client">Client:</label>
+          <select data-bind="value:client" class="form-control" placeholder="select option" id="client" required>
+            <option value="Select">Select</option>
+            <option value="Client A">Client A</option>
+            <option value="Client B">Client B</option>
+            <option value="Client C">Client C</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="Client Priority">Client Priority:</label>
+          <input type="number" data-bind="value:clientPriority" class="form-control" id="ClientPriority" name="ClientPriority" min=0
+            required>
+        </div>
+        <div class="form-group">
+          <label for="Target">Target date:</label>
+          <input type="date" data-bind="value:targetDate" class="form-control" id="target" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="Client">Product Area:</label>
+          <select data-bind="value:productArea" class="form-control" id="Product" required>
+            <option value="Select">Select</option>
+            <option value="Policies">Policies</option>
+            <option value="Billing">Billing</option>
+            <option value="Claims">Claims</option>
+            <option value="Reports">Reports</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block;margin-bottom:0%" data-bind="click: Done">
+          Submit
+        </button>
+      </form>
+      <script type="text/javascript">
+      //creating knockout.js object to bind the form details dynamically
+        var appViewModel = {
+          title: ko.observable(""),
+          description: ko.observable(""),
+          client: ko.observable(""),
+          clientPriority: ko.observable(""),
+          targetDate: ko.observable(""),
+          productArea: ko.observable("")
+        };
+        //creating function for submit to perform some action after clicking submit button
+        self.Done = function () {
+          console.log("After clicking submit");
+          //converting knockout.js object into json data
+          var jsonData = ko.toJSON(appViewModel);
+          console.log("converting knockout.js data to json data " + jsonData);
+          $.ajax({
+            url: '/createFeature',
+            type: 'POST',
+            data: jsonData,
+            contentType: 'application/json',
+            success: function (result) {
+              if (result == "successfully inserted data into database") {
+                alert("Record inserted Sucessfully");
+                window.location = '/table';
+              }
+              else {
+                alert(result + "please contact your administrator");
+              }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+              alert("some error");
+            }
+          });
+        };
+        // this script is used to restrict the target date to only display future dates starting current day.
+        var now = new Date(),
+          stringDate = now.toISOString();
+        minDate = stringDate.substring(0, 10);
+        $('#target').prop('min', minDate);
+        ko.applyBindings(appViewModel);
+      </script>
+    </div>
+  </div>
+</body>
+</html>

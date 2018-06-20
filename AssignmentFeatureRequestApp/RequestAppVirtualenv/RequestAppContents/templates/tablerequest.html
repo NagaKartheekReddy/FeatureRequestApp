@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Insurance Company</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Here we are linking the bootstrap and knockout.js library files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ url_for ('static', filename='js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for ('static', filename='js/featurerequestdetails.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='css/LocalCSS/styles.css')}}">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation bar section html code -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#">Feature Request Table Information</a>
+            </li>
+            <li>
+                <a href='/'>Return Feature Request Home</a>
+            </li>
+        </ul>
+        <div class="container">
+            <h2>FeatureRequestForm Table</h2>
+            <table class="table" id="RetriveTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Client</th>
+                        <th>ClientPriority</th>
+                        <th>TargetDate</th>
+                        <th>ProductArea</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
