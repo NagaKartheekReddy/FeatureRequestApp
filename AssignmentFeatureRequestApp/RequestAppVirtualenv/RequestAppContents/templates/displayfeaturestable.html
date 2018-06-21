@@ -1,3 +1,4 @@
+<!--displayfeaturestable html page is used to disaplay all the features that are retrieved from the database in a table.-->
 <html>
 
 <head>
@@ -8,16 +9,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Here we are linking the data tables and featurerequestdetails js files and styles.css for styling html page-->
     <script type="text/javascript" src="{{ url_for ('static', filename='js/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{ url_for ('static', filename='js/featurerequestdetails.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='css/LocalCSS/styles.css')}}">
-
-
 </head>
 
 <body>
     <div class="container">
-        <!-- Navigation bar section html code -->
+        <!-- Navigation Header bar section html code -->
         <ul class="nav nav-tabs" role="tablist">
             <li class="active">
                 <a href="#">Feature Request Table Information</a>

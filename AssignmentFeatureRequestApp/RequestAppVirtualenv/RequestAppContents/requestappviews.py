@@ -9,5 +9,5 @@ def form():
 #creating route for table.html   
 @object_flask.route('/table', methods=['GET'])
 def table():
-    return render_template('tablerequest.html')
+    return render_template('displayfeaturestable.html')
 

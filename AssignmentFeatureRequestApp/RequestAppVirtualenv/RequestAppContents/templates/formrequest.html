@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- formrequest html file is used to display all the contents in a form that are required to submit a new feature-->
 <html>
 
 <head>
@@ -11,8 +11,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="{{ url_for ('static', filename='js/knockout-3.4.2.js')}}"></script>
   <!--<script type="text/javascript" src="{{ url_for ('static', filename='js/featurerequestformbind.js')}}"></script>-->
+  <!-- Here we are linking styles.css file for styling html pages -->
   <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='css/LocalCSS/styles.css')}}">
-
 </head>
 
 <body>
@@ -29,7 +29,7 @@
     <div class="container" style="width:40%">
       <h3 style="text-align: center;">Feature Request form</h3>
       <!-- From here form section starts in which contents are written title, description e.t.c-->
-      <form>
+      <form data-bind="submit: onSubmit">
         <div class="form-group">
           <label for="Title">Title:</label>
           <input type="text" data-bind="value: title" class="form-control" id="title" name="short note" required>
@@ -66,13 +66,14 @@
             <option value="Reports">Reports</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block;margin-bottom:0%" data-bind="click: Done">
+        <button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block;margin-bottom:0%">
           Submit
         </button>
       </form>
+      <!-- Below script is used to bind the input elements present in the form and also used in static/js/featurerequestformbind.js.-->
       <script type="text/javascript">
-      //creating knockout.js object to bind the form details dynamically
-        var appViewModel = {
+        //creating knockout.js object to bind the form details.
+        var formViewModel = {
           title: ko.observable(""),
           description: ko.observable(""),
           client: ko.observable(""),
@@ -80,18 +81,17 @@
           targetDate: ko.observable(""),
           productArea: ko.observable("")
         };
-        //creating function for submit to perform some action after clicking submit button
-        self.Done = function () {
+        //creating function for submit to perform some action after clicking submit button.
+        self.onSubmit = function () {
           console.log("After clicking submit");
-          //converting knockout.js object into json data
-          var jsonData = ko.toJSON(appViewModel);
-          console.log("converting knockout.js data to json data " + jsonData);
+          //converting knockout.js object into json data.
           $.ajax({
             url: '/createFeature',
             type: 'POST',
-            data: jsonData,
+            data: ko.toJSON(formViewModel),
             contentType: 'application/json',
             success: function (result) {
+              // Giving alerts according to result variable
               if (result == "successfully inserted data into database") {
                 alert("Record inserted Sucessfully");
                 window.location = '/table';
@@ -101,18 +101,19 @@
               }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-              alert("some error");
+              alert("Error Occured. Please contact your administrator");
             }
           });
         };
-        // this script is used to restrict the target date to only display future dates starting current day.
+        // Below script is used to restrict the target date to only display future dates starting current day.
         var now = new Date(),
           stringDate = now.toISOString();
         minDate = stringDate.substring(0, 10);
         $('#target').prop('min', minDate);
-        ko.applyBindings(appViewModel);
+        ko.applyBindings(formViewModel);
       </script>
     </div>
   </div>
 </body>
+
 </html>
