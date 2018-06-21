@@ -8,8 +8,8 @@ Built a project 'Feature Request Application' with python, flask, sqlalchemy and
   
 # Getting Started:
 	Pre-requisites: Project is built and validated using the following software
-		* Python (v.3.6.4), 
-		* PostgreSql database(v.10.1)
+		* Python (v.3.6.5), 
+		* MySql database(v.10.1)
 		* Browsers: Chrome(v.64.) and Firefox(v.55+)
 	Note: If any other database has to be used please change the connection string in Config.py and also change system paths 
 # Installation:
@@ -65,16 +65,15 @@ Built a project 'Feature Request Application' with python, flask, sqlalchemy and
 	6.Product Area: A selection list of product areas (use 'Policies', 'Billing', 'Claims', 'Reports')
 		•Product Area [String Type] field display list of four options 'Policies', 'Billing', 'Claims', 'Reports' (using 
 		html ‘select’ and ‘options’ type attributes) and user can select any one of Product Area.
-		•Product Area is a mandatory field.
-    	At the End of page a reference link for 'List of Feature Requests' is present to navigate to FeatureRequestDetails Page
+		•Product Area is a mandatory field.    	
 # Feature Request Application Details Page:
 	Entering all values and on clicking ‘Submit’ it will navigate to details page at url ‘http://127.0.0.1:5000
-	/FeatureRequestDeatils’ where all the feature request details are reflected in a table [built with jQuery data Table]
+	/table’ where all the feature request details are reflected in a table [built with jQuery data Table]
 	which will have Sorting and Searching
 # Application Details:
 	The following are requirements on the tech stack. This stack demonstrates mastery of tools our team favors.
-	•OS: Windows/Linux
-	•Server Side Scripting: Python (3.6.4)
+	•OS: Windows
+	•Server Side Scripting: Python (3.6.5)
 	•Server Framework: Flask (0.12.2)
 	•SqlAlchemy (1.2.2): Solution Options for Reprioritization
 		1.SQL ORM: This has been implemented-ORM tools provide an object oriented query language. This allows application
