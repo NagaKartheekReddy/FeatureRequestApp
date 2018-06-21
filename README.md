@@ -1,13 +1,15 @@
 # AssignmentFeatureRequestApp
 Built a project 'Feature Request Application' with python, flask, sqlalchemy and knockoutjs.
 # Feature Request Application:
-	Feature Request App built in Flask which is a web application framework written in Python. 
-	It consist of feature request form page where a user can fill in a feature request. The form entry values are binded using KnockoutJS and send as JSON data to webservice layer	using SqlAlchemy ORM details are persisted in database and feature request details page where a user can see feature request list in the form of a table.
+	Feature Request App built in Flask which is a web application framework written in Python. It consist of feature request
+	form page where a user can fill in a feature request. The form entry values are binded using KnockoutJS and send as JSON
+	data to webservice layer using SqlAlchemy ORM details are persisted in database and feature request details page 
+	where a user can see feature request list in the form of a table.
   
 # Getting Started:
 	Pre-requisites: Project is built and validated using the following software
 		* Python (v.3.6.5), 
-		* MySql database
+		* MySql database (v.8.0.11)
 		* Browsers: Chrome(v.64.) and Firefox(v.55+)
 	 
 # Installation:
@@ -20,7 +22,7 @@ Built a project 'Feature Request Application' with python, flask, sqlalchemy and
 		
 	3.Then install required packages present in requirements.txt by executing command ‘pip install –r requirements.txt’ OR
 	can run command ‘pip install  package-name’
-	**(RequestAppVirtualenv)..AssignmentFeatureRequestApp\RequestAppVirtualenv\Scripts> pip install –r 		    requirements.txt
+	**(RequestAppVirtualenv)..AssignmentFeatureRequestApp\RequestAppVirtualenv\Scripts>pip install –r requirements.txt
 	4.Set Flask_APP variable by using command ‘set FLASK_APP=featureapprun.py’
 	
 	**(RequestAppVirtualenv)..AssignmentFeatureRequestApp\RequestAppVirtualenv\Scripts>set FLASK_APP=featureapprun.py
@@ -42,7 +44,6 @@ Built a project 'Feature Request Application' with python, flask, sqlalchemy and
 		•Description [String type] Length- 1000 characters (Will stop user further entering 1000 by using html input 
 		‘maxlength’ attribute).
 		•Description uses ‘text-area’ html input attribute which can be auto align as required by user.
-		•Description filed is not mandatory.
 	3.Client: A selection list of clients (use "Client A", "Client B", "Client C")
 		•Client [String type] will display list with three options "Client A","Client B", "Client C" (using html  
 		‘select’ and ‘options’ type attributes) and user can select any one of the clients.
@@ -53,7 +54,6 @@ Built a project 'Feature Request Application' with python, flask, sqlalchemy and
 		•Client Priority [Integer Type]-User can only enter numbers (Will stop user entering String values, by using 
 		html input type as ‘number’).
 		•Client Priority is mandatory field.
-		•User cannot enter any negative values.
 		•Client Priority will not be same for two features with respect to a single client as Client Priority will be 
 		re-ordered.
 	5.Target Date: The date that the client is hoping to have the feature.
@@ -61,8 +61,8 @@ Built a project 'Feature Request Application' with python, flask, sqlalchemy and
 		•User can only select future dates and past dates cannot be selected.
 		•Target Date is a mandatory field.
 	6.Product Area: A selection list of product areas (use 'Policies', 'Billing', 'Claims', 'Reports')
-		•Product Area [String Type] field display list of four options 'Policies', 'Billing', 'Claims', 'Reports' (using 
-		html ‘select’ and ‘options’ type attributes) and user can select any one of Product Area.
+		•Product Area [String Type] field display list of four options 'Policies', 'Billing', 'Claims', 'Reports' 
+		(using html ‘select’ and ‘options’ type attributes) and user can select any one of Product Area.
 		•Product Area is a mandatory field.    	
 # Feature Request Application Details Page:
 	Entering all values and on clicking ‘Submit’ it will navigate to details page at url ‘http://127.0.0.1:5000
@@ -73,10 +73,14 @@ Built a project 'Feature Request Application' with python, flask, sqlalchemy and
 	•OS: Windows
 	•Server Side Scripting: Python (3.6.5)
 	•Server Framework: Flask 
-	•SqlAlchemy (1.2.2): Solution Options for Reprioritization
-		1.SQL ORM: This has been implemented-ORM tools provide an object oriented query language. This allows application developers to focus on the object model and not to have to be concerned with the database structure or SQL semantics.	The ORM tool itself will translate the query language into the appropriate syntax for the database.
-		2.Using Stored Procedure: Stored procedures are compiled once and stored in executable form, so procedure calls are quick and efficient. Executable code is automatically cached and shared among users. This lowers memory requirements and
-invocation overhead.
+	•Flask-SqlAlchemy (2.3.2): Solution Options for Reprioritization
+		1.SQL ORM: This has been implemented-ORM tools provide an object oriented query language. This allows
+		application developers to focus on the object model and not to have to be concerned with the database structure
+		or SQL semantics.The ORM tool itself will translate the query language into the appropriate syntax for the 
+		database.
+		2.Using Stored Procedure: Stored procedures are compiled once and stored in executable form, so procedure calls
+		are quick and efficient. Executable code is automatically cached and shared among users. This lowers memory 
+		requirements and invocation overhead.
 
 	•JavaScript: KnockoutJS (3.4.2): Knockout is a JavaScript library that which gives a simplified and dynamic Model-View-
 	 View Model binding pattern for all the UI elements in HTML.
