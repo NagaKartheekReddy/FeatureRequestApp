@@ -63,6 +63,7 @@ class CreateRetreiveService:
             # For loop is used to reprioritize the requests present in the table
             for clientPriorityReprioritize in range(clientPriorityReprioritize, totalFeaturesClient+1,1):
                 (self.getSession().query(FeatureRequestModel).filter_by(clientPriority=clientPriorityReprioritize, client = clientType).first()).clientPriority+=1
+                self.getSession().commit() 
         # Surrounded with try except for any exception 
         except Exception as e:
             self.getSession().rollback()
